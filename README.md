@@ -1,6 +1,34 @@
-# Docker Image for XYZ Analysis
+# Docker Image for Fastq Aata Process
 
 This Docker image provides an environment for performing XYZ analysis. It includes all the necessary dependencies and tools.
+
+
+## Docker Installation Guide
+This guide provides step-by-step instructions for downloading and installing Docker on your system.
+
+## Prerequisites
+Before you begin the installation, make sure you meet the following prerequisites:
+
+Supported Operating System: Docker is compatible with a variety of operating systems, including Windows, macOS, and Linux. Make sure your system meets the requirements for running Docker. You can check the official Docker documentation for system requirements specific to your operating system.
+
+
+## Installation Steps
+Follow these steps to download and install Docker:
+
+## Download Docker: 
+Visit the official Docker website (https://www.docker.com/) and navigate to the download page. Choose the appropriate version of Docker for your operating system and click on the download link to start the download process.
+
+## Install Docker:
+
+Windows: Double-click on the downloaded installer file and follow the on-screen instructions to run the installation wizard. Accept the license agreement, choose the installation directory, and select any additional components you want to install. Once the installation is complete, Docker should be ready to use.
+macOS: Double-click on the downloaded DMG file to open it. Drag and drop the Docker application into the Applications folder. Launch Docker from the Applications folder and follow any prompts to authorize the installation. Docker should be installed and ready for use.
+Linux: Installation steps may vary depending on the Linux distribution you are using. Refer to the Docker documentation for detailed installation instructions specific to your distribution.
+Verify Installation: After the installation is complete, open a terminal or command prompt and run the following command to verify that Docker is installed correctly:
+
+```docker
+docker --version
+```
+
 
 ## Build a Docker image
 
@@ -38,22 +66,19 @@ docker cp <CONTAINER ID>:/output/trim_read1_read2_alig.bam <local_path>
 ```
 
 ## Memory Allocation
-
-The recommended memory allocation for running this Docker image is at least 4GB. Depending on the size of the input data and the complexity of the analysis, you may need to allocate more memory.
-
-To allocate more memory, use the `-m` flag when running the Docker container:
+To check the real-time resource usage statistics of running Docker containers, you can use the following command. It provides information about the CPU, memory, network I/O, and block I/O usage of each container.
 
 ```docker
-docker run --rm -m 8g xyz-analysis
+docker stats
 ```
 
 
-This will allocate 8GB of memory to the container.
-
-## Execution Time
+## Check execution time to run a Docker image
 
 The execution time of the analysis pipeline depends on various factors, including the size of the input data and the complexity of the analysis. It is difficult to provide an exact estimate without specific details.
 
-However, as a rough estimate, the analysis pipeline typically takes around X hours to complete. Please note that this is just an estimate and the actual execution time may vary.
+To determine how much time it takes to run a Docker image, you can use the time command in your shell.
 
-For any further questions or issues, please contact the XYZ Analysis team at example@example.com.
+```docker
+time docker run <image_name>
+```
