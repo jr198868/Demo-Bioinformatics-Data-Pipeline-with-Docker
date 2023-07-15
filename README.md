@@ -2,7 +2,7 @@
 
 This Docker image provides an environment for performing XYZ analysis. It includes all the necessary dependencies and tools.
 
-## Build
+## Build a Docker image
 
 To build the Docker image, navigate to the directory containing the Dockerfile and run the following command:
 
@@ -10,16 +10,32 @@ To build the Docker image, navigate to the directory containing the Dockerfile a
 docker build -t bioinformatics_demo .
 ```
 
-## Run
+## Run a Docker container
 
-To run the Docker image, use the following command:
+To run a Docker container, use the following command:
 
 ```docker
-docker docker run --name bioinformatics_demo bioinformatics_demo
+docker run -it -d -v /path/to/local:/app bioinformatics_demo
+docker run -it -d -v /Users/rjing/Desktop/test:/app bioinformatics_demo
 ```
 
-
 This will execute the analysis pipeline inside the Docker container. Make sure to mount any necessary input files or directories to the container using the `-v` option.
+
+
+## Copy files from the container to local machine folder
+
+1. Check the running Docker containers on your system
+```docker
+docker ps
+```
+
+2. Find the 'CONTAINER ID' and run the following commands to copy analytical results to local machine folder
+
+```docker
+docker cp <CONTAINER ID>:/output/report.csv <local_path>
+docker cp <CONTAINER ID>:/output/trim_read1_read2_alig.bam <local_path>
+
+```
 
 ## Memory Allocation
 

@@ -97,5 +97,8 @@ RUN python3 generate_report.py
 # Copy the entire /app directory from the container to the host machine
 VOLUME /app
 
+# EXPOSE port 80 for HTTP traffic
+EXPOSE 80
+
 # Set the entrypoint to an interactive shell
 CMD ["/bin/bash"]
