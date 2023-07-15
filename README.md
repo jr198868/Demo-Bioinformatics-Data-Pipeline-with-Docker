@@ -4,28 +4,29 @@ This Docker image provides an environment for performing XYZ analysis. It includ
 
 
 ## Docker Installation Guide
+
 This guide provides step-by-step instructions for downloading and installing Docker on your system.
 
 ## Prerequisites
+
 Before you begin the installation, make sure you meet the following prerequisites:
 
-Supported Operating System: Docker is compatible with a variety of operating systems, including Windows, macOS, and Linux. Make sure your system meets the requirements for running Docker. You can check the official Docker documentation for system requirements specific to your operating system.
-
+- Supported Operating System: Docker is compatible with a variety of operating systems, including Windows, macOS, and Linux. Make sure your system meets the requirements for running Docker. You can check the official Docker documentation for system requirements specific to your operating system.
 
 ## Installation Steps
+
 Follow these steps to download and install Docker:
 
-## Download Docker: 
-Visit the official Docker website (https://www.docker.com/) and navigate to the download page. Choose the appropriate version of Docker for your operating system and click on the download link to start the download process.
+1. **Download Docker**: Visit the official Docker website (https://www.docker.com/) and navigate to the download page. Choose the appropriate version of Docker for your operating system and click on the download link to start the download process.
 
-## Install Docker:
+2. **Install Docker**:
+   - **Windows**: Double-click on the downloaded installer file and follow the on-screen instructions to run the installation wizard. Accept the license agreement, choose the installation directory, and select any additional components you want to install. Once the installation is complete, Docker should be ready to use.
+   - **macOS**: Double-click on the downloaded DMG file to open it. Drag and drop the Docker application into the Applications folder. Launch Docker from the Applications folder and follow any prompts to authorize the installation. Docker should be installed and ready for use.
+   - **Linux**: Installation steps may vary depending on the Linux distribution you are using. Refer to the Docker documentation for detailed installation instructions specific to your distribution.
 
-Windows: Double-click on the downloaded installer file and follow the on-screen instructions to run the installation wizard. Accept the license agreement, choose the installation directory, and select any additional components you want to install. Once the installation is complete, Docker should be ready to use.
-macOS: Double-click on the downloaded DMG file to open it. Drag and drop the Docker application into the Applications folder. Launch Docker from the Applications folder and follow any prompts to authorize the installation. Docker should be installed and ready for use.
-Linux: Installation steps may vary depending on the Linux distribution you are using. Refer to the Docker documentation for detailed installation instructions specific to your distribution.
-Verify Installation: After the installation is complete, open a terminal or command prompt and run the following command to verify that Docker is installed correctly:
+3. **Verify Installation**: After the installation is complete, open a terminal or command prompt and run the following command to verify that Docker is installed correctly:
 
-```docker
+```shell
 docker --version
 ```
 
