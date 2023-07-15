@@ -7,7 +7,7 @@ This Docker image provides an environment for performing XYZ analysis. It includ
 To build the Docker image, navigate to the directory containing the Dockerfile and run the following command:
 
 ```docker
-docker build -t bioinformaticsDemo .
+docker build -t bioinformatics_demo .
 ```
 
 ## Run
@@ -15,7 +15,7 @@ docker build -t bioinformaticsDemo .
 To run the Docker image, use the following command:
 
 ```docker
-docker docker run --name bioinformaticsDemo bioinformaticsDemo
+docker docker run --name bioinformatics_demo bioinformatics_demo
 ```
 
 
