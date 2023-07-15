@@ -6,15 +6,17 @@ This Docker image provides an environment for performing XYZ analysis. It includ
 
 To build the Docker image, navigate to the directory containing the Dockerfile and run the following command:
 
+```docker
 docker build -t xyz-analysis .
-
+```
 
 ## Run
 
 To run the Docker image, use the following command:
 
+```docker
 docker run --rm xyz-analysis
-
+```
 
 
 This will execute the analysis pipeline inside the Docker container. Make sure to mount any necessary input files or directories to the container using the `-v` option.
@@ -25,8 +27,9 @@ The recommended memory allocation for running this Docker image is at least 4GB.
 
 To allocate more memory, use the `-m` flag when running the Docker container:
 
+```docker
 docker run --rm -m 8g xyz-analysis
-
+```
 
 
 This will allocate 8GB of memory to the container.
