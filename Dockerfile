@@ -3,6 +3,11 @@ FROM ubuntu:latest
 # Install dependencies
 RUN apt-get update && apt-get install -y openjdk-11-jre-headless wget unzip pigz perl libfindbin-libs-perl bwa samtools default-jdk bedtools seqtk mash 
 
+# Install matplotlib
+RUN apt-get install -y python3-pip
+RUN pip3 install matplotlib
+RUN pip3 install matplotlib pysam
+
 # Download and install FastQC
 RUN wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip && \
     unzip fastqc_v0.11.9.zip && \
@@ -35,6 +40,7 @@ COPY /input_data/TruSeq3-PE.fa /app/TruSeq3-PE.fa
 COPY /input_data/GCF_000155815.1_ASM15581v1_genomic.fna /app/reference.fa
 COPY /input_data/refseq.genomes.k21s1000.msh /app/refseq.genomes.k21s1000.msh
 COPY /generate_report.py /app/generate_report.py
+COPY /plot_phred_quality_MAPQ_curve.py /app/plot_phred_quality_MAPQ_curve.py
 
 # Run FastQC on the paired-end FASTQ files
 RUN fastqc /app/read1.fastq /app/read2.fastq
@@ -57,7 +63,7 @@ RUN bwa mem -t 4 /app/reference.fa /app/trim_read1_paired.fastq /app/trim_read2_
 
 # Convert SAM to BAM
 RUN samtools view -bS /app/trim_read1_read2_alig.sam > /app/trim_read1_read2_alig.bam
-
+RUN samtools stats trim_read1_read2_alig.sam > stats.txt
 
 # Convert read1.fastq and read2.fastq to fasta
 RUN seqtk mergepe /app/trim_read1_paired.fastq /app/trim_read2_paired.fastq > /app/trim_read1_read2_paired.fasta
@@ -83,13 +89,25 @@ RUN bedtools bamtobed -i /app/trim_read1_read2_alig.bam | awk '{print $3 - $2}' 
 # Calculate the mean and standard deviation
 RUN awk '{ sum += $1; sumsq += ($1)^2 } END { print "Mean:", sum/NR, "Standard Deviation:", sqrt(sumsq/NR - (sum/NR)^2) }' /app/insert_sizes.txt > /app/insert_size_metrics.txt
 
-
 # Get the number of molecules sequenced using samtools flagstat
 RUN samtools flagstat /app/trim_read1_read2_alig.bam > /app/flagstat.txt
 
-# Copy the BAM file to the output directory
+# run plot_phred_quality_MAPQ_curve.py
+RUN python3 plot_phred_quality_MAPQ_curve.py
+
+# Copy the necessary result file to the output directory
 RUN mkdir /output
 RUN cp /app/trim_read1_read2_alig.bam /output/trim_read1_read2_alig.bam
+RUN cp /app/trim_read1_read2_alig.sam /output/trim_read1_read2_alig.sam
+RUN cp /app/flagstat.txt /output/flagstat.txt
+RUN cp /app/insert_size_metrics.txt /output/insert_size_metrics.txt
+RUN cp /app/mash_isolate_output_sorted.txt /output/mash_isolate_output_sorted.txt
+RUN cp /app/RefSeq_accession_numbers.txt /output/RefSeq_accession_numbers.txt
+RUN cp /app/read1_fastqc.zip /output/read1_fastqc.zip
+RUN cp /app/read2_fastqc.zip /output/read2_fastqc.zip
+RUN cp /app/stats.txt /output/stats.txt
+RUN cp /app/phred_quality_MAPQ_curve_read1.png /output/phred_quality_MAPQ_curve_read1.png
+RUN cp /app/phred_quality_MAPQ_curve_read2.png /output/phred_quality_MAPQ_curve_read2.png
 
 # run generate_report.py
 RUN python3 generate_report.py

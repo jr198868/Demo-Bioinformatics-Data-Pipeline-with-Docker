@@ -30,7 +30,6 @@ Follow these steps to download and install Docker:
 docker --version
 ```
 
-
 ## Build a Docker image
 
 To build the Docker image, navigate to the directory containing the Dockerfile and run the following command:
@@ -41,7 +40,9 @@ docker build -t bioinformatics_demo .
 
 ## Run a Docker container
 
-To run a Docker container, use the following command:
+To run a Docker container, you can use the following command.
+
+Here's an example of how you can use the "-v" flag to mount a volume when running a Docker container:
 
 ```docker
 docker run -it -d -v /path/to/local:/app bioinformatics_demo
@@ -63,6 +64,8 @@ docker ps
 ```docker
 docker cp <CONTAINER ID>:/output/report.csv <local_path>
 docker cp <CONTAINER ID>:/output/trim_read1_read2_alig.bam <local_path>
+docker cp <CONTAINER ID>:/output/phred_quality_MAPQ_curve_read1.png <local_path>
+docker cp <CONTAINER ID>:/output/phred_quality_MAPQ_curve_read2.png <local_path>
 
 ```
 
