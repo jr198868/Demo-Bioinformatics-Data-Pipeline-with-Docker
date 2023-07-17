@@ -1,15 +1,9 @@
 # Docker Image for Fastq Aata Process
 
-This Docker image provides an environment for performing XYZ analysis. It includes all the necessary dependencies and tools.
+This Docker image provides an environment for performing a bioinformatics data pipeline. It includes all the necessary dependencies and tools.
 
-
-## Docker Installation Guide
-
-This guide provides step-by-step instructions for downloading and installing Docker on your system.
 
 ## Prerequisites
-
-Before you begin the installation, make sure you meet the following prerequisites:
 
 - Supported Operating System: Docker is compatible with a variety of operating systems, including Windows, macOS, and Linux. Make sure your system meets the requirements for running Docker. You can check the official Docker documentation for system requirements specific to your operating system.
 
@@ -46,7 +40,6 @@ Here's an example of how you can use the "-v" flag to mount a volume when runnin
 
 ```docker
 docker run -it -d -v /path/to/local:/app bioinformatics_demo
-docker run -it -d -v /Users/rjing/Desktop/test:/app bioinformatics_demo
 ```
 
 This will execute the analysis pipeline inside the Docker container. Make sure to mount any necessary input files or directories to the container using the `-v` option.
@@ -66,7 +59,6 @@ docker cp <CONTAINER ID>:/output/report.csv <local_path>
 docker cp <CONTAINER ID>:/output/trim_read1_read2_alig.bam <local_path>
 docker cp <CONTAINER ID>:/output/phred_quality_MAPQ_curve_read1.png <local_path>
 docker cp <CONTAINER ID>:/output/phred_quality_MAPQ_curve_read2.png <local_path>
-
 ```
 
 ## Memory Allocation
