@@ -1,0 +1,2 @@
+Number of molecules sequenced,Sequencing configuration,Library type,Mean library insert size,Standard deviation of library insert size,RefSeq or Genbank accession numbers
+154894 + 0 in total (QC-passed reads + QC-failed reads); read1: 77209 ; read2:77209 ,Read1: 300bp; Index1: 12bp; Read2: 300bp; Index2: 12bp,TruSeq, 248.433 , 58.6879,RefSeq genome: GCF_000155815.1_ASM15581v1; MASH distance: 0.0154006
