@@ -45,14 +45,18 @@ docker run -it -d -v /path/to/local:/app bioinformatics_demo
 This will execute the analysis pipeline inside the Docker container. Make sure to mount any necessary input files or directories to the container using the `-v` option.
 
 
-## Copy files from the container to local machine folder
+## Copy analytical results from the container to a local machine folder
+
+The analytical results from this bioinformatics data pipeline were moved to the **/output** folder inside of the Docker container.
+
+To copy analytical results from the container to a local machine folder, you can use the following command.
 
 1. Check the running Docker containers on your system
 ```docker
 docker ps
 ```
 
-2. Find the 'CONTAINER ID' and run the following commands to copy analytical results to local machine folder
+2. Find the 'CONTAINER ID' and run the following commands to copy analytical results from the /output folder to a local machine folder
 
 ```docker
 docker cp <CONTAINER ID>:/output/report.csv <local_path>

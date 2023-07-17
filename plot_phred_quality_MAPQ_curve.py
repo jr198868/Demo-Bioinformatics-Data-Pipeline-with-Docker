@@ -42,7 +42,7 @@ def plot_phred_score_curve(phred_scores, fastqc_file, color):
     read = fastqc_file.split('/')[-1].split('.')[0].split('_')[0]
 
     # Plot the curve
-    plt.plot(x, y, marker='o', label=f"Phred quality score - {read}", color=color)
+    plt.plot(x, y, marker='o', label=f"Mean Phred quality score - {read}", color=color)
 
 
 def parse_sam_data(sam_file):
@@ -106,7 +106,7 @@ def plotfig(fastqc_file, sam_file, color):
     plt.ylabel("Score")
 
     # Set plot title
-    plt.title("Phred quality score and mean MAPQ Score vs. position in read (bp)")
+    plt.title("Mean Phred quality score and mean MAPQ Score vs. position in read (bp)")
 
     # Display legend
     plt.legend()
