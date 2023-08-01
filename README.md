@@ -1,7 +1,8 @@
-# Docker Image for Fastq Aata Process
+# Docker Image for Fastq Data Process
 
 This Docker image provides an environment for performing a bioinformatics data pipeline. It includes all the necessary dependencies and tools.
 
+![Alt Text](/abstract.jpg)
 
 ## Prerequisites
 
